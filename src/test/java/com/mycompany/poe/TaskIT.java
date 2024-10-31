@@ -25,16 +25,40 @@ public class TaskIT {
         assertEquals(expResult, result);
        
     }
-
+    //INCORRECT USER details
+@Test
+public void invalidtestCheckTaskDescription() {
+        System.out.println("checkTaskDescription");
+        String taskDescription = "Create add task feature to add task users";
+        Task instance = new Task();
+        boolean expResult = true;
+        boolean result = instance.checkTaskDescription(taskDescription);
+        assertEquals(expResult, result);
+       
+    }
     /**
      * Test of createTaskID method, of class Task.
      */
     @Test
     public void testCreateTaskID() {
         System.out.println("createTaskID");
-        String TaskName = "";
+        String TaskName = "Login Feature";
         int taskNumber = 0;
-        String developerDetails = "";
+        String developerDetails = "Robyn Harrison";
+        Task instance = new Task();
+        String expResult = "AD:1:BYN";
+        String result = instance.createTaskID(TaskName, taskNumber, developerDetails);
+        assertEquals(expResult, result);
+        
+    }
+  //test incorrect values of the class  
+@Test
+
+public void invalidtestCreateTaskID() {
+        System.out.println("createTaskID");
+        String TaskName = "Add Task Feature";
+        int taskNumber = 0;
+        String developerDetails = "Mike Smith";
         Task instance = new Task();
         String expResult = "";
         String result = instance.createTaskID(TaskName, taskNumber, developerDetails);
@@ -48,31 +72,56 @@ public class TaskIT {
     @Test
     public void testPrintTaskDetails() {
         System.out.println("PrintTaskDetails");
-        String TaskName = "";
+        String TaskName = "Login Feature";
         int TaskNumber = 0;
         String developerDetails = "";
-        int TaskDuration = 0;
+        int TaskDuration = 8;
         String TaskID = "";
-        int TaskStatus = 0;
+        int TaskStatus = 1;
         Task instance = new Task();
         String expResult = "";
         String result = instance.PrintTaskDetails(TaskName, TaskNumber, developerDetails, TaskDuration, TaskID, TaskStatus);
         assertEquals(expResult, result);
         
     }
-
+    //incorrect user details on the method test
+@Test
+public void invalidtestPrintTaskDetails() {
+        System.out.println("PrintTaskDetails");
+        String TaskName = "Add Task Feature";
+        int TaskNumber = 0;
+        String developerDetails = "Mike Smith";
+        int TaskDuration = 8;
+        String TaskID = "";
+        int TaskStatus = 3;
+        Task instance = new Task();
+        String expResult = "";
+        String result = instance.PrintTaskDetails(TaskName, TaskNumber, developerDetails, TaskDuration, TaskID, TaskStatus);
+        assertEquals(expResult, result);
+        
+    }
     /**
      * Test of returnTotalhours method, of class Task.
      */
     @Test
     public void testReturnTotalhours() {
         System.out.println("returnTotalhours");
-        int TaskDuration = 0;
+        int TaskDuration = 8;
         Task instance = new Task();
         int expResult = 0;
         int result = instance.returnTotalhours(TaskDuration);
         assertEquals(expResult, result);
        
     }
-    
+    //incorrect user details on the method test
+    @Test
+    public void invalidtestReturnTotalhours() {
+        System.out.println("returnTotalhours");
+        int TaskDuration = 10;
+        Task instance = new Task();
+        int expResult = 3;
+        int result = instance.returnTotalhours(TaskDuration);
+        assertEquals(expResult, result);
+       
+    }
 }
